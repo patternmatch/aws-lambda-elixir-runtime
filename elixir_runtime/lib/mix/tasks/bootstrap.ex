@@ -29,17 +29,12 @@ defmodule Mix.Tasks.Bootstrap do
     """
     \#!/bin/bash
 
-    set -x
-
     BASE=$(dirname "$0")
     EXE=$BASE/bin/#{app}
-
     HOME=/tmp
+    
     export HOME
-
-    \# So that distillery doesn't try to write any files
     export RELEASE_READ_ONLY=true
-
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BASE/lib/#{@runtime_libs}
 
     $EXE foreground
