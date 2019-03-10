@@ -8,8 +8,8 @@ defmodule Mix.Tasks.Zip do
   def run(_) do
     path = release_path(app_name())
 
-    {:ok, path} = File.cwd()
-    cmd = "cd #{path} && zip -r lambda.zip * && cp lambda.zip #{path}"
+    {:ok, source} = File.cwd()
+    cmd = "cd #{path} && zip -r lambda.zip * && cp lambda.zip #{source}"
 
     System.cmd("sh", ["-c", cmd])
   end
